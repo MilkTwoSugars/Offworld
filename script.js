@@ -1,6 +1,6 @@
 var app = angular.module("offworldApp", ['ui.bootstrap', 'ngAnimate']);
 
-app.controller("mainController", ["$scope", "$timeout", "$interval", function ($scope, $timeout, $interval) {
+app.controller("mainController", function ($scope, $timeout, $interval) {
 
     // Initialisation
     $scope.gameStarted = true;
@@ -555,4 +555,4 @@ app.controller("mainController", ["$scope", "$timeout", "$interval", function ($
         }
     };
 
-}]);
+});
