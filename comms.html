@@ -1,0 +1,11 @@
+﻿<h1 class="title">Signal</h1>
+
+<div class="well signalBar">
+    <div class="progress">
+        <div class="progress-bar progress-bar-offworld progress-bar-signal" role="progressbar" aria-valuenow="40"
+             aria-valuemin="0" aria-valuemax="100" ng-style="{width: (getBroadcast() + '%')}">
+        </div>
+    </div>
+    <span class="machine-button" ng-show="broadcastStatus"><button class="btn btn-block btn-offworld-active" ng-click="broadcast()">Broadcast</button></span>
+    <span class="machine-button" ng-show="!broadcastStatus"><button class="btn btn-block btn-offworld-active" ng-click="impatienceCheck()">Awaiting response...</button></span>
+</div>

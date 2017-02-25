@@ -1,0 +1,13 @@
+﻿<div class="panel panel-default resourceBar">
+    <div class="resource">Resources</div>
+    <div class="resource"><div class="glyphicon glyphicon-asterisk" tooltip-placement="left" uib-tooltip="Ore"></div> {{ore}}</div>
+    <div class="resource" ng-show="extractorsAvailable"><div class="glyphicon glyphicon-stop" tooltip-placement="left" uib-tooltip="Metal"></div> {{metal}}</div>
+    <div class="resource" ng-show="pumpsAvailable"><div class="glyphicon glyphicon-tint" tooltip-placement="left" uib-tooltip="Water"></div> {{water}}</div>
+    <div class="resource" ng-show="wellsAvailable"><div class="glyphicon glyphicon-cloud" tooltip-placement="left" uib-tooltip="Gas"></div> {{gas}}</div>
+    <div class="resource"></div>
+    <div class="resource" ng-show="true"><div class="glyphicon glyphicon-equalizer" tooltip-placement="left" uib-tooltip="Material"></div> {{material}}</div>
+    <div class="resource" ng-show="true"><div class="glyphicon glyphicon-cd" tooltip-placement="left" uib-tooltip="Alloy"></div> {{alloy}}</div>
+    <div class="resource" ng-show="true"><div class="glyphicon glyphicon-qrcode" tooltip-placement="left" uib-tooltip="Component"></div> {{component}}</div>
+    <div class="resource" ng-show="true"><div class="glyphicon glyphicon-oil" tooltip-placement="left" uib-tooltip="Fuel"></div> {{fuel}}</div>
+    <div class="resource" ng-show="true"><div class="glyphicon glyphicon-trash" tooltip-placement="left" uib-tooltip="Waste"></div> {{waste}}</div>
+</div>

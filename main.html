@@ -1,0 +1,36 @@
+﻿
+<div class="panel panel-default main">
+
+        <ul class="nav nav-tabs">
+            <li class="tabZeroHead active"><a data-toggle="tab" href data-target="#tabZero">Control</a></li>
+            <li class="tabOneHead"><a data-toggle="tab" href data-target="#tabOne">Mining</a></li>
+            <li class="tabTwoHead"><a data-toggle="tab" href data-target="#tabTwo" ng-show="showTabTwo">Pumping</a></li>
+            <li class="tabThreeHead"><a data-toggle="tab" href data-target="#tabThree" ng-show="showTabThree">Factory</a></li>
+            <li class="tabFourHead"><a data-toggle="tab" href data-target="#tabFour" ng-show="showTabFour">Robotics</a></li>
+            <li class="tabFiveHead"><a data-toggle="tab" href data-target="#tabFive" ng-show="showTabFive">Signal</a></li>
+
+        </ul>
+    
+        <div class="tab-content">
+            <div id="tabZero" class="tab-pane fade in active">
+                <div ng-include="'control.html'"></div>
+            </div>
+            <div id="tabOne" class="tab-pane">
+                <div ng-include="'mining.html'"></div>
+            </div>
+            <div id="tabTwo" class="tab-pane fade">
+                <div ng-include="'liquids.html'"></div>
+            </div>
+            <div id="tabThree" class="tab-pane fade">
+                <div ng-include="'factory.html'"></div>
+            </div>
+            <div id="tabFour" class="tab-pane fade">
+                <div ng-include="'drones.html'"></div>
+            </div>
+            <div id="tabFive" class="tab-pane fade">
+                <div ng-include="'comms.html'"></div>
+            </div>
+        </div>
+
+</div>
+

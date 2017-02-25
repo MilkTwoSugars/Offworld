@@ -1,0 +1,222 @@
+/*General*/
+
+body {
+    font-family: 'Roboto Mono', monospace !important;
+}
+
+a {
+    color: black !important;
+}
+
+label {
+    font-size: 16px;
+}
+
+.sidebar {
+    box-shadow: 5px 5px 2px #dedede !important;
+    height: 100%;
+    margin: 5%;
+}
+
+.main {
+    box-shadow: 5px 5px 2px #dedede !important;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+#tabZero, #tabOne, #tabTwo, #tabThree, #tabFour, #tabFive {
+    padding: 2%;
+}
+
+.btn:focus {
+  outline: none !important;
+}
+
+.well-directive {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*Control Panel*/
+
+.control-panel {
+    width: 90%;
+}
+
+.powerBar {
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+.signalBar {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.progress {
+    height: 35px !important;
+}
+
+.progress-bar {
+    transition-duration: 400ms !important;
+}
+
+.progress-bar-offworld {
+      background-color: dimgrey !important;
+      box-shadow: none !important;
+}
+
+.progress-bar-water {
+      background-color: #93ebff !important;
+}
+
+.progress-bar-metal {
+      background-color: #fbdc88 !important;
+}
+
+.progress-bar-gas {
+      background-color: #90ffbf !important;
+}
+
+.progress-bar-factory {
+    background-color: #a3d3d4 !important;
+}
+
+.progress-bar-signal {
+    background-color: #faad64 !important;
+}
+
+.progress-bar-drones {
+    background-color: #fc6f6f !important;
+}
+
+.btn-offworld-active, .btn-offworld-active:active {
+      background-color: #edecec !important;
+} 
+
+.machine-button {
+    margin-top: 5%;
+}
+
+.machine-panel {
+    width: 100%;
+    transition: all linear 1s;
+}
+
+.machine-panel-drones {
+    width: 100%;
+    transition: all linear 1s;
+}
+
+.facility {
+    font-size: 16px;
+    transition: all linear 1s;
+}
+
+.factory-resources {
+    text-align: center !important;
+    font-size: 20px !important;
+    
+}
+
+.factory-input {
+    padding: 3%;
+}
+
+.factory-input-selected {
+    background-color: #e8e8e8 !important;
+}
+
+.factory-quantity-box {
+    margin-top: 50%;
+}
+
+.factory-quantity-selection {
+    text-align: center !important;
+    margin: 10%;
+}
+
+.factory-quantity-selected {
+    background-color: #e8e8e8 !important;
+}
+
+.drone-total {
+    margin-top: 35%;
+    margin-bottom: 35%;
+    font-size: 42px !important;
+    text-align: center;
+
+}
+
+
+/*Animations*/
+
+.eventMessage.ng-enter {
+    opacity: 0;
+    transition: all linear 1s;
+}
+.eventMessage.ng-enter-active {
+    opacity: 1;
+}
+
+.facility.ng-hide, .machine-panel.ng-hide{
+    opacity: 0;
+    transition: all linear 1s;
+}
+
+.startPage {
+    transition: all linear 2.5s;
+    height: 400px;
+    opacity: 1;
+}
+
+
+.startPage.ng-hide {
+    opacity: 0;
+    height: 0px;
+}
+
+.mainPage {
+    transition: all linear 2s;
+    opacity: 1;
+}
+
+.mainPage.ng-hide {
+    opacity: 0;
+}
+
+
+
+
+
+/*Resources*/
+
+.resourceBar {
+    padding: 0.8%;
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    box-shadow: 5px 5px 2px #dedede !important;
+}
+
+.resource {
+    margin-right: 4%;
+    display: inline;
+}
+
+
+/*Logging*/
+
+.eventMessage {
+    padding: 0px;
+    font-style: italic;
+}

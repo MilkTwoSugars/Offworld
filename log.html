@@ -1,0 +1,13 @@
+﻿<div class="panel panel-default sidebar">
+    <div class="panel-heading">
+        <h1 class="title">L0G</h1>
+    </div>
+    <div class="panel-body">
+        
+        <div class="well eventMessage" ng-repeat="event in events track by event.id">
+        {{event.message}}
+        </div>
+
+    </div>
+    <button class="btn btn-block btn-offworld-active" data-toggle="modal" data-target="#debugModal">Debug</button>
+</div>

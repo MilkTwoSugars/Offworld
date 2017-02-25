@@ -1,0 +1,15 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading"><h4>Facilities</h4></div>
+    <div class="panel-body">
+        <!--Pumps-->
+        <div class="panel panel-default facility" ng-show="pumpsAvailable">
+            <div class="panel-heading" tooltip-placement="left" uib-tooltip="Increases Water yield by 1. Pumping is automatic." tooltip-trigger="hover"><span class="glyphicon glyphicon-tint"></span> Pumps <div class="pull-right">{{totalPumps}}</div></div>
+            <div class="panel-body">Requires <span class="glyphicon glyphicon-asterisk"></span> x {{pumpCost}}<button class="btn btn-offworld-active pull-right" ng-click="buyPump()"> Install</button></div>
+        </div>
+        <!--Wells-->
+        <div class="panel panel-default facility" ng-show="wellsAvailable">
+            <div class="panel-heading" tooltip-placement="left" uib-tooltip="Increases Gas yield by 1. Pumping is automatic." tooltip-trigger="hover"><span class="glyphicon glyphicon-cloud"></span> Wells <div class="pull-right">{{totalWells}}</div></div>
+            <div class="panel-body">Requires <span class="glyphicon glyphicon-equalizer"></span> x {{wellCost}}<button class="btn btn-offworld-active pull-right" ng-click="buyWell()"> Install</button></div>
+        </div>
+    </div>
+</div>
