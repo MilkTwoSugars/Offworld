@@ -10,6 +10,7 @@
 *.sln.docstates
 *.sln
 fonts/
+Offworld/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
