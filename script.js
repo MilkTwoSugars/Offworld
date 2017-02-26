@@ -1,4 +1,4 @@
-var app = angular.module("offworldApp", ['ui.bootstrap', 'ngAnimate']);
+var app = angular.module("offworldApp", ['ui.bootstrap', 'ngAnimate', 'ngSanitize']);
 
 app.controller("mainController", function ($scope, $timeout, $interval) {
     app.storyText($scope);
@@ -127,8 +127,8 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
     $scope.broadcastClock = 100;
 
     $scope.droneInterval = 500;
-    $scope.droneIncrement = 1;
-    $scope.droneClock = 100;
+    $scope.droneIncrement = 4;
+    $scope.droneClock = 25;
 
     // Game Controller
 

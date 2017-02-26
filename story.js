@@ -14,7 +14,14 @@
     $scope.events = [{ type: "Start", message: $scope.logWelcome }];
 
     // Misc events
-    $scope.logDebug = { id: 0, message: "[Unlocking]" };
+    $scope.logDebug = {
+        id: 0, message: "<b>Cras</b> efficitur sapien vel neque hendrerit, id rutrum ante dictum. <br /><br />"
+        + "Sed facilisis erat fringilla neque posuere faucibus. In venenatis nisi id sapien iaculis vehicula."
+        + "Morbi posuere, sapien sed dignissim sodales, enim odio viverra ipsum, vitae lacinia risus sapien ut quam."
+        + "Quisque ultricies massa congue bibendum sodales. Cras viverra commodo imperdiet."
+        + "Mauris blandit fermentum ex vitae luctus. Aenean eu porttitor velit, vitae elementum augue."
+    };
+
     $scope.logImpatience = { id: 0, message: "Extreme impatience detected. Please remain calm." };
     $scope.logBroadcastReturn = { id: 0, message: "Signal returned no response." };
 

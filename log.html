@@ -5,7 +5,7 @@
     <div class="panel-body">
         
         <div class="well eventMessage" ng-repeat="event in events track by event.id">
-        {{event.message}}
+        <div ng-bind-html="event.message">{{event.message}}</div>
         </div>
 
     </div>
