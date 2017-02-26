@@ -103,15 +103,15 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
 
     // Timing
     $scope.oreInterval = 500; // Time in ms between ticks
-    $scope.oreIncrement = 2; // Amount to be added each tick
-    $scope.oreClock = 50; // Total number of ticks (where applicable)
+    $scope.oreIncrement = 10; // Amount to be added each tick
+    $scope.oreClock = 10; // Total number of ticks (where applicable)
 
     $scope.metalInterval = 500;
     $scope.metalIncrement = 1;
     $scope.metalClock = 100;
 
     $scope.waterInterval = 500;
-    $scope.waterIncrement = 2;
+    $scope.waterIncrement = 5;
 
     $scope.gasInterval = 500;
     $scope.gasIncrement = 1;
