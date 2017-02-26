@@ -3,74 +3,78 @@
 
 
 <div class="container-fluid">
-    <div class="well">
-        
-        <div class="progress">
-            <div class="progress-bar progress-bar-factory" role="progressbar" aria-valuenow="40"
-                 aria-valuemin="0" aria-valuemax="100" ng-style="{width: (getFactory() + '%')}">
-            </div>
-        </div>
-        <span class="machine-button" ng-show="factoryStatus"><button class="btn btn-block btn-offworld-active" ng-click="process(factoryInput, factoryQuantity)">Process</button></span>
-        <span class="machine-button" ng-hide="factoryStatus"><button class="btn btn-block btn-offworld-active" ng-click="impatienceCheck()">Processing...</button></span>
-        
+
+    <div class="well" ng-show="!factoryActive">
+        <div class="factory-build">Requires 95 <span class="glyphicon glyphicon-asterisk"></span> + 5 <span class="glyphicon glyphicon-stop"></span></div>
+        <span class="machine-button"><button class="btn btn-block btn-offworld-active" ng-click="buyFactory()">Install</button></span>
     </div>
 
-    <div class="row">
-        <div class="col-md-5">
-
-            <div class="panel panel-default machine-panel clearfix">
-                <div class="panel-heading"><h4><span class="glyphicon glyphicon-upload"></span> Input</h4></div>
-                <div class="panel-body">
-
-                    
-                    <div class="panel panel-default factory-input" ng-class="{ 'factory-input-selected': factoryInput == 'materialSelected'}" tooltip-placement="left" uib-tooltip="Uses 1 Ore and 1 Water to produce Material" ng-click="factoryInput = 'materialSelected'">
-                        <div class="factory-resources"><span class="glyphicon glyphicon-asterisk"></span> + <span class="glyphicon glyphicon-tint"></span></div>
-                    </div>
-
-
-
-
-                    <div class="panel panel-default factory-input" ng-class="{ 'factory-input-selected': factoryInput == 'alloySelected'}" tooltip-placement="left" uib-tooltip="Uses 1 Ore and 1 Metal to produce Alloy" ng-click="factoryInput = 'alloySelected'">
-                        <div class="factory-resources"><span class="glyphicon glyphicon-asterisk"></span> + <span class="glyphicon glyphicon-stop"></span></div>
-                    </div>
-
-
-
-                    <div class="panel panel-default factory-input" ng-class="{ 'factory-input-selected': factoryInput == 'componentSelected'}" tooltip-placement="left" uib-tooltip="Uses 1 Metal and 1 Gas to produce Component. Complex resources take longer to produce." ng-click="factoryInput = 'componentSelected'">
-                        <div class="factory-resources"><span class="glyphicon glyphicon-stop"></span> + <span class="glyphicon glyphicon-cloud"></span></div>
-                    </div>
-
-
-
-                    <div class="panel panel-default factory-input" ng-class="{ 'factory-input-selected': factoryInput == 'fuelSelected'}" tooltip-placement="left" uib-tooltip="Uses 1 Water and 1 Gas to produce Fuel. Complex resources take longer to produce." ng-click="factoryInput = 'fuelSelected'">
-                        <div class="factory-resources"><span class="glyphicon glyphicon-tint"></span> + <span class="glyphicon glyphicon-cloud"></span></div>
-                    </div>
-                    
-
+        <div class="well fade-in" ng-show="factoryActive">
+            <div class="progress">
+                <div class="progress-bar progress-bar-factory" role="progressbar" aria-valuenow="40"
+                     aria-valuemin="0" aria-valuemax="100" ng-style="{width: (getFactory() + '%')}">
                 </div>
             </div>
+            <span class="machine-button" ng-show="factoryStatus"><button class="btn btn-block btn-offworld-active" ng-click="process(factoryInput, factoryQuantity)">Process</button></span>
+            <span class="machine-button" ng-hide="factoryStatus"><button class="btn btn-block btn-offworld-active" ng-click="impatienceCheck()">Processing...</button></span>
 
         </div>
 
+        <div class="row">
+            <div class="col-md-5">
 
-        <div class="col-md-2">
-            <div class="panel panel-default factory-quantity-box">
-                <div class="well factory-quantity-selection" ng-class="{ 'factory-quantity-selected': factoryQuantity == 1}" ng-click="factoryQuantity = 1">1</div>
-                <div class="well factory-quantity-selection" ng-class="{ 'factory-quantity-selected': factoryQuantity == 10}" ng-click="factoryQuantity = 10">10</div>
-                <div class="well factory-quantity-selection" ng-class="{ 'factory-quantity-selected': factoryQuantity == 100}" ng-click="factoryQuantity = 100">100</div>
+                <div class="panel panel-default machine-panel clearfix" ng-show="factoryActive">
+                    <div class="panel-heading"><h4><span class="glyphicon glyphicon-upload"></span> Input</h4></div>
+                    <div class="panel-body">
+
+
+                        <div class="panel panel-default factory-input" ng-class="{ 'factory-input-selected': factoryInput == 'materialSelected'}" tooltip-placement="left" uib-tooltip="Uses 1 Ore and 1 Water to produce Material" ng-click="factoryInput = 'materialSelected'">
+                            <div class="factory-resources"><span class="glyphicon glyphicon-asterisk"></span> + <span class="glyphicon glyphicon-tint"></span></div>
+                        </div>
+
+
+
+                        <div class="panel panel-default factory-input" ng-class="{ 'factory-input-selected': factoryInput == 'alloySelected'}" tooltip-placement="left" uib-tooltip="Uses 1 Ore and 1 Metal to produce Alloy" ng-click="factoryInput = 'alloySelected'">
+                            <div class="factory-resources"><span class="glyphicon glyphicon-asterisk"></span> + <span class="glyphicon glyphicon-stop"></span></div>
+                        </div>
+
+
+
+                        <div class="panel panel-default factory-input" ng-class="{ 'factory-input-selected': factoryInput == 'componentSelected'}" tooltip-placement="left" uib-tooltip="Uses 1 Metal and 1 Gas to produce Component. Complex resources take longer to produce." ng-click="factoryInput = 'componentSelected'">
+                            <div class="factory-resources"><span class="glyphicon glyphicon-stop"></span> + <span class="glyphicon glyphicon-cloud"></span></div>
+                        </div>
+
+
+
+                        <div class="panel panel-default factory-input" ng-class="{ 'factory-input-selected': factoryInput == 'fuelSelected'}" tooltip-placement="left" uib-tooltip="Uses 1 Water and 1 Gas to produce Fuel. Complex resources take longer to produce." ng-click="factoryInput = 'fuelSelected'">
+                            <div class="factory-resources"><span class="glyphicon glyphicon-tint"></span> + <span class="glyphicon glyphicon-cloud"></span></div>
+                        </div>
+
+
+                    </div>
+                </div>
+
             </div>
-        </div>
-        <div class="col-md-5">
-            <div class="panel panel-default machine-panel" >
-                <div class="panel-heading"><h4><span class="glyphicon glyphicon-download"></span> Output</h4></div>
-                <div class="panel-body">
-                   <div class="well" ng-show="factoryInput == 'materialSelected'"><h4><span class="glyphicon glyphicon-equalizer"></span> Material x {{factoryQuantity}}</h4></div>
-                    <div class="well" ng-show="factoryInput == 'alloySelected'"><h4><span class="glyphicon glyphicon-cd"></span> Alloy x {{factoryQuantity}}</h4></div>
-                    <div class="well" ng-show="factoryInput == 'componentSelected'"><h4><span class="glyphicon glyphicon-qrcode"></span> Component x {{factoryQuantity}}</h4></div>
-                    <div class="well" ng-show="factoryInput == 'fuelSelected'"><h4><span class="glyphicon glyphicon-oil"></span> Fuel x {{factoryQuantity}}</h4></div>
-                    <div class="well"><h4><span class="glyphicon glyphicon-trash"></span> Waste x {{factoryQuantity}}</h4></div>
+
+
+            <div class="col-md-2">
+                <div class="panel panel-default factory-quantity-box fade-in" ng-show="factoryActive">
+                    <div class="well factory-quantity-selection" ng-class="{ 'factory-quantity-selected': factoryQuantity == 1}" ng-click="factoryQuantity = 1">1</div>
+                    <div class="well factory-quantity-selection" ng-class="{ 'factory-quantity-selected': factoryQuantity == 10}" ng-click="factoryQuantity = 10">10</div>
+                    <div class="well factory-quantity-selection" ng-class="{ 'factory-quantity-selected': factoryQuantity == 100}" ng-click="factoryQuantity = 100">100</div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="panel panel-default machine-panel" ng-show="factoryActive">
+                    <div class="panel-heading"><h4><span class="glyphicon glyphicon-download"></span> Output</h4></div>
+                    <div class="panel-body">
+                        <div class="well" ng-show="factoryInput == 'materialSelected'"><h4><span class="glyphicon glyphicon-equalizer"></span> Material x {{factoryQuantity}}</h4></div>
+                        <div class="well" ng-show="factoryInput == 'alloySelected'"><h4><span class="glyphicon glyphicon-cd"></span> Alloy x {{factoryQuantity}}</h4></div>
+                        <div class="well" ng-show="factoryInput == 'componentSelected'"><h4><span class="glyphicon glyphicon-qrcode"></span> Component x {{factoryQuantity}}</h4></div>
+                        <div class="well" ng-show="factoryInput == 'fuelSelected'"><h4><span class="glyphicon glyphicon-oil"></span> Fuel x {{factoryQuantity}}</h4></div>
+                        <div class="well"><h4><span class="glyphicon glyphicon-trash"></span> Waste x {{factoryQuantity}}</h4></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

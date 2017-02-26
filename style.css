@@ -124,8 +124,14 @@ label {
 
 .factory-resources {
     text-align: center !important;
-    font-size: 20px !important;
-    
+    font-size: 20px !important;   
+}
+
+.factory-build {
+    text-align: center !important;
+    font-size: 28px !important;
+    margin-top: 10%;
+    margin-bottom: 10%; 
 }
 
 .factory-input {
@@ -157,6 +163,10 @@ label {
 
 }
 
+.fade-in {
+    transition: all linear 1s;
+}
+
 
 /*Animations*/
 
@@ -168,7 +178,7 @@ label {
     opacity: 1;
 }
 
-.facility.ng-hide, .machine-panel.ng-hide{
+.facility.ng-hide, .machine-panel.ng-hide, .machine-panel-drones.ng-hide, .fade-in.ng-hide {
     opacity: 0;
     transition: all linear 1s;
 }

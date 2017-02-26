@@ -12,12 +12,12 @@
             <div class="panel-body">Requires <span class="glyphicon glyphicon-equalizer"></span> x {{extractorCost}} <button class="btn btn-offworld-active pull-right" ng-click="buyExtractor()"> Install</button></div>
         </div>
         <!--Automated Ore-->
-        <div class="panel panel-default facility" ng-show="automationAvailable && !automatedOre">
+        <div class="panel panel-default facility" ng-show="automationActive && !automatedOre">
             <div class="panel-heading" tooltip-placement="left" uib-tooltip="Ore Drilling performed by Drones" tooltip-trigger="hover"><span class="glyphicon glyphicon-user"></span> Automatic Drilling <div class="pull-right" ng-show="automatedOre">Installing...</div></div>
             <div class="panel-body">Requires <span class="glyphicon glyphicon-user"></span> x {{oreAutomationCost}} <button class="btn btn-offworld-active pull-right" ng-click="buyOreAutomation()"> Install</button></div>
         </div>
         <!--Automated Ore-->
-        <div class="panel panel-default facility" ng-show="automationAvailable && automatedOre && !automatedMetal">
+        <div class="panel panel-default facility" ng-show="automationActive && automatedOre && !automatedMetal">
             <div class="panel-heading" tooltip-placement="left" uib-tooltip="Metal Extraction performed by Drones" tooltip-trigger="hover"><span class="glyphicon glyphicon-user"></span> Automatic Extraction <div class="pull-right" ng-show="automatedMetal">Installing...</div></div>
             <div class="panel-body">Requires <span class="glyphicon glyphicon-user"></span> x {{metalAutomationCost}} <button class="btn btn-offworld-active pull-right" ng-click="buyMetalAutomation()"> Install</button></div>
 

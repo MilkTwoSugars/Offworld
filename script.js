@@ -1,14 +1,11 @@
 var app = angular.module("offworldApp", ['ui.bootstrap', 'ngAnimate']);
 
 app.controller("mainController", function ($scope, $timeout, $interval) {
+    app.storyText($scope);
 
     // Initialisation
     $scope.gameStarted = true;
     $scope.impatience = 0;
-
-    $scope.username = "User";
-    $scope.welcomeMessage = "Logging started for  " + $scope.username + ".";
-    $scope.events = [{ type: "Start", message: $scope.welcomeMessage}];
 
     // Progress
     $scope.rigsAvailable = true;
@@ -18,7 +15,17 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
     $scope.extractorsActive = false;
     $scope.wellsAvailable = false;
     $scope.wellsActive = false;
-    $scope.automationAvailable = true;
+
+    $scope.factoryAvailable = false;
+    $scope.factoryActive = false;
+
+    $scope.automationAvailable = false;
+    $scope.automationActive = false;
+
+    $scope.componentAvailable = false;
+    $scope.alloyAvailable = false;
+    $scope.fuelAvailable = false;
+    $scope.materialAvailable = false;
 
     $scope.showTabTwo = false;
     $scope.showTabThree = false;
@@ -127,17 +134,6 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
     $scope.droneInterval = 500;
     $scope.droneIncrement = 1;
     $scope.droneClock = 100;
-
-
-
-    // Events
-    $scope.eventCounter = 0;
-    $scope.alert = { id: 0, message: "[Unlocking]" };
-    $scope.alert2 = { id: 0, message: "Drilling..." };
-    $scope.impatienceAlert = { id: 0, message: "Extreme impatience detected. Please remain calm." }
-    $scope.firstPump = { id: 0, message: "Automatic pumping routine started." }
-    $scope.pumpsUnlocked = { id: 0, message: "Compliance check completed: Releasing Pump blueprints." }
-    $scope.broadcastReturn = { id: 0, message: "Signal returned no response." }
 
     // Game Controller
 
@@ -274,7 +270,7 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
         $scope.broadcastTimer += $scope.broadcastIncrement;
         if ($scope.broadcastTimer >= 100 && $scope.broadcastStatus == false) {
             $scope.broadcastStatus = true;
-            $scope.newEvent($scope.broadcastReturn);
+            $scope.newEvent($scope.logBroadcastReturn);
         }
 
     };
@@ -477,11 +473,11 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
             $scope.totalPumps += 1;
 
             if ($scope.pumpsActive == false) {
+
                 // First pump only
-                
                 $scope.pumpsActive = true;
                 $interval($scope.waterCooldown, $scope.waterInterval);
-                $scope.newEvent($scope.firstPump);
+                $scope.newEvent($scope.logFirstPump);
             }
         }
 
@@ -493,17 +489,41 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
             $scope.totalWells += 1;
 
             if ($scope.wellsActive == false) {
-                // First pump only
 
+                // First well only
                 $scope.wellsActive = true;
                 $interval($scope.gasCooldown, $scope.gasInterval);
+                $scope.newEvent($scope.logFirstWell);
             }
         }
 
     };
 
+    $scope.buyFactory = function () {
+
+        if ($scope.ore >= 95 && $scope.metal >= 5) {
+            $scope.ore -= 95;
+            $scope.metal -= 5;
+            $scope.factoryActive = true;
+            $scope.newEvent($scope.logFirstFactory);
+        }
+
+    }
+
+    $scope.buyAutomation = function () {
+
+        if ($scope.component >= 25 && $scope.metal >= 25 && $scope.alloy >= 25) {
+            $scope.component -= 25;
+            $scope.metal -= 25;
+            $scope.alloy -= 25;
+            $scope.automationActive = true;
+            $scope.newEvent($scope.logFirstAutomation);
+        }
+
+    }
+
     $scope.buyOreAutomation = function () {
-        if($scope.automationAvailable && $scope.drones >= $scope.oreAutomationCost)
+        if($scope.automationActive && $scope.drones >= $scope.oreAutomationCost)
         {
             $scope.drones -= $scope.oreAutomationCost;
             $scope.automatedOre = true;
@@ -512,7 +532,7 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
     }
 
     $scope.buyMetalAutomation = function () {
-        if ($scope.automationAvailable && $scope.drones >= $scope.metalAutomationCost) {
+        if ($scope.automationActive && $scope.drones >= $scope.metalAutomationCost) {
             $scope.drones -= $scope.metalAutomationCost;
             $scope.automatedMetal = true;
             $scope.extract();
@@ -540,7 +560,27 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
         $scope.extractorsAvailable = true;
         $scope.wellsAvailable = true;
 
-        $scope.newEvent($scope.alert);
+        //$scope.factoryAvailable = true;
+        //$scope.automationAvailable = true;
+
+        $scope.componentAvailable = true;
+        $scope.alloyAvailable = true;
+        $scope.fuelAvailable = true;
+        $scope.materialAvailable = true;
+
+        $scope.newEvent($scope.logDebug);
+    }
+
+    $scope.debugResources = function () {
+        $scope.ore += 100;
+        $scope.water += 100;
+        $scope.metal += 100;
+        $scope.gas += 100;
+        $scope.material += 100;
+        $scope.alloy += 100;
+        $scope.component += 100;
+        $scope.fuel += 100;
+        $scope.drones += 100;
     }
 
     $scope.impatienceCheck = function () {
@@ -550,7 +590,7 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
 
         } else {
 
-            $scope.newEvent($scope.impatienceAlert)
+            $scope.newEvent($scope.logImpatience)
             $scope.impatience = 0;
         }
     };
