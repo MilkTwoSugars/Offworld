@@ -27,11 +27,6 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
     $scope.fuelAvailable = false;
     $scope.materialAvailable = false;
 
-    $scope.showTabTwo = false;
-    $scope.showTabThree = false;
-    $scope.showTabFour = false;
-    $scope.showTabFive = true;
-
     // States
     $scope.drillStatus = true;
     $scope.extractorStatus = true;
@@ -446,11 +441,13 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
             $scope.ore -= $scope.rigCost;
             $scope.totalRigs += 1;
 
+            $scope.firstUnlockCheck();
+
             if ($scope.pumpsAvailable == false && $scope.totalRigs >= 2) {
                 // Unlock water pumping
                 $scope.showTabTwo = true;
                 $scope.pumpsAvailable = true;
-                $scope.newEvent($scope.pumpsUnlocked);
+                $scope.newEvent($scope.logPumpsUnlocked);
             }
         }
     };
@@ -459,10 +456,12 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
         if ($scope.material >= $scope.extractorCost) {
             $scope.material -= $scope.extractorCost;
             $scope.totalExtractors += 1;
+            $scope.secondUnlockCheck();
 
             if ($scope.extractorsActive == false) {
                 // First Extractor only
                 $scope.extractorsActive = true;
+                $scope.newEvent($scope.logFirstExtractor);
             }
         }
     };
@@ -471,6 +470,8 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
         if ($scope.ore >= $scope.pumpCost) {
             $scope.ore -= $scope.pumpCost;
             $scope.totalPumps += 1;
+
+            $scope.firstUnlockCheck();
 
             if ($scope.pumpsActive == false) {
 
@@ -487,6 +488,7 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
         if ($scope.material >= $scope.wellCost) {
             $scope.material -= $scope.wellCost;
             $scope.totalWells += 1;
+            $scope.secondUnlockCheck();
 
             if ($scope.wellsActive == false) {
 
@@ -501,10 +503,12 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
 
     $scope.buyFactory = function () {
 
-        if ($scope.ore >= 95 && $scope.metal >= 5) {
-            $scope.ore -= 95;
-            $scope.metal -= 5;
+        if ($scope.ore >= 100 && $scope.water >= 100) {
+            $scope.ore -= 100;
+            $scope.water -= 100;
             $scope.factoryActive = true;
+            $scope.extractorsAvailable = true;
+            $scope.wellsAvailable = true;
             $scope.newEvent($scope.logFirstFactory);
         }
 
@@ -539,6 +543,22 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
         }
     }
 
+    $scope.firstUnlockCheck = function () {
+        if($scope.totalRigs >= 10 && $scope.totalPumps >= 10 && $scope.factoryAvailable == false)
+        {
+            $scope.factoryAvailable = true;
+            $scope.newEvent($scope.logFactoryUnlocked);
+        }
+    }
+
+    $scope.secondUnlockCheck = function () {
+
+        if ($scope.totalExtractors > 1 && $scope.totalWells > 1 && $scope.automationAvailable == false) {
+            $scope.automationAvailable = true;
+            $scope.newEvent($scope.logAutomationUnlocked);
+        }
+    }
+
     // Misc
 
     $scope.debug = function()
@@ -553,20 +573,12 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
         $scope.fuel += 100;
         $scope.drones += 0;
 
-        $scope.showTabTwo = true;
-        $scope.showTabThree = true;
-        $scope.showTabFour = true;
         $scope.pumpsAvailable = true;
         $scope.extractorsAvailable = true;
         $scope.wellsAvailable = true;
 
-        //$scope.factoryAvailable = true;
-        //$scope.automationAvailable = true;
-
-        $scope.componentAvailable = true;
-        $scope.alloyAvailable = true;
-        $scope.fuelAvailable = true;
-        $scope.materialAvailable = true;
+        $scope.factoryAvailable = true;
+        $scope.automationAvailable = true;
 
         $scope.newEvent($scope.logDebug);
     }

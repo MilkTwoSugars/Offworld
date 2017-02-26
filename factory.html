@@ -5,7 +5,7 @@
 <div class="container-fluid">
 
     <div class="well" ng-show="!factoryActive">
-        <div class="factory-build">Requires 95 <span class="glyphicon glyphicon-asterisk"></span> + 5 <span class="glyphicon glyphicon-stop"></span></div>
+        <div class="factory-build">Requires 100 <span class="glyphicon glyphicon-asterisk"></span> + 100 <span class="glyphicon glyphicon-tint"></span></div>
         <span class="machine-button"><button class="btn btn-block btn-offworld-active" ng-click="buyFactory()">Install</button></span>
     </div>
 
@@ -40,13 +40,13 @@
 
 
 
-                        <div class="panel panel-default factory-input" ng-class="{ 'factory-input-selected': factoryInput == 'componentSelected'}" tooltip-placement="left" uib-tooltip="Uses 1 Metal and 1 Gas to produce Component. Complex resources take longer to produce." ng-click="factoryInput = 'componentSelected'">
+                        <div class="panel panel-default factory-input" ng-show="automationAvailable" ng-class="{ 'factory-input-selected': factoryInput == 'componentSelected'}" tooltip-placement="left" uib-tooltip="Uses 1 Metal and 1 Gas to produce Component. Complex resources take longer to produce." ng-click="factoryInput = 'componentSelected'">
                             <div class="factory-resources"><span class="glyphicon glyphicon-stop"></span> + <span class="glyphicon glyphicon-cloud"></span></div>
                         </div>
 
 
 
-                        <div class="panel panel-default factory-input" ng-class="{ 'factory-input-selected': factoryInput == 'fuelSelected'}" tooltip-placement="left" uib-tooltip="Uses 1 Water and 1 Gas to produce Fuel. Complex resources take longer to produce." ng-click="factoryInput = 'fuelSelected'">
+                        <div class="panel panel-default factory-input" ng-show="automationAvailable" ng-class="{ 'factory-input-selected': factoryInput == 'fuelSelected'}" tooltip-placement="left" uib-tooltip="Uses 1 Water and 1 Gas to produce Fuel. Complex resources take longer to produce." ng-click="factoryInput = 'fuelSelected'">
                             <div class="factory-resources"><span class="glyphicon glyphicon-tint"></span> + <span class="glyphicon glyphicon-cloud"></span></div>
                         </div>
 

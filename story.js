@@ -19,19 +19,20 @@
     $scope.logBroadcastReturn = { id: 0, message: "Signal returned no response." };
 
     // Unlock events
+    $scope.logPumpsUnlocked = { id: 0, message: "Compliance check completed. Releasing Pump blueprints." };
     $scope.logFirstPump = { id: 0, message: "Automatic pumping routine started." };
-    $scope.logPumpsUnlocked = { id: 0, message: "Compliance check completed: Releasing Pump blueprints." };
-
+    $scope.logFactoryUnlocked = { id: 0, message: "Excellent results. Releasing Factory blueprints." }
+    $scope.logFirstFactory = { id: 0, message: "Factory installed. Releasing advanced extraction blueprints." };
     $scope.logFirstWell = { id: 0, message: "Automatic well routine started." };
-    $scope.logWellsUnlocked = { id: 0, message: "Progress noted: Releasing Well blueprints." };
+    $scope.logFirstExtractor = { id: 0, message: "Metal extractors active." };
 
-    $scope.logExtractorsUnlocked = { id: 0, message: "Excellent productivity: Releasing Extractor blueprints." };
+    
+    
 
-    $scope.logFactoryUnlocked = { id: 0, message: "Exponential success: Releasing Factory blueprints." };
-    $scope.logFirstFactory = { id: 0, message: "Factory installed." };
-
-    $scope.logAutomationUnlocked = { id: 0, message: "Peak efficiency: Releasing Robotics blueprints." };
+    $scope.logAutomationUnlocked = { id: 0, message: "Peak efficiency. Releasing Robotics blueprints." };
     $scope.logFirstAutomation = { id: 0, message: "Robotics laboratory installed." };
+
+    
 
 
 };
