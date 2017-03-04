@@ -2,6 +2,7 @@ var app = angular.module("offworldApp", ['ui.bootstrap', 'ngAnimate', 'ngSanitiz
 
 app.controller("mainController", function ($scope, $timeout, $interval) {
     app.storyText($scope);
+    app.domeGenerator($scope);
 
     // Initialisation
     $scope.gameStarted = true;
@@ -26,6 +27,8 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
     $scope.alloyAvailable = false;
     $scope.fuelAvailable = false;
     $scope.materialAvailable = false;
+
+    $scope.domeAvailable = false;
 
     // States
     $scope.drillStatus = true;
@@ -593,6 +596,11 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
         $scope.component += 100;
         $scope.fuel += 100;
         $scope.drones += 100;
+    }
+
+    $scope.debugDome = function () {
+        $scope.domeAvailable = true;
+        $scope.initialiseCanvas();
     }
 
     $scope.impatienceCheck = function () {

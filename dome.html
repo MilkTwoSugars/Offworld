@@ -1,0 +1,24 @@
+﻿<div class="panel panel-default machine-panel">
+    <div class="panel-body">
+        <div class="domeContainer">
+            <canvas id="domeCanvas" width="{{canvasWidth}}" height="{{canvasHeight}}" style="z-index: 1;"></canvas>
+            <canvas id="canvasLayerOne" width="{{canvasWidth}}" height="{{canvasHeight}}" style="z-index: 20;"></canvas>
+            <canvas id="canvasLayerTwo" width="{{canvasWidth}}" height="{{canvasHeight}}" style="z-index: 300;"></canvas>
+            <canvas id="canvasLayerThree" width="{{canvasWidth}}" height="{{canvasHeight}}" style="z-index: 4000;"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default machine-panel">
+    <div class="panel-heading">Construction</div>
+    <div class="panel-body">
+        <span class="machine-button"><button class="btn btn-block btn-offworld-active" ng-click="generateCity()">Generate</button></span>
+        <span class="machine-button"><button class="btn btn-block btn-offworld-active" ng-click="drawDome()">Dome</button></span>
+        <span class="machine-button"><button class="btn btn-block btn-offworld-active" ng-click="constructBuildingOne()">1</button></span>
+        <span class="machine-button"><button class="btn btn-block btn-offworld-active" ng-click="constructBuildingTwo()">2</button></span>
+        <span class="machine-button"><button class="btn btn-block btn-offworld-active" ng-click="constructBuildingThree()">3</button></span>
+        <span class="machine-button"><button class="btn btn-block btn-offworld-active" ng-click="clearCanvas()">Clear</button></span>
+    </div>
+</div>
+
+
