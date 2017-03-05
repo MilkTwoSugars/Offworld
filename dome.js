@@ -31,7 +31,7 @@
         line.arc(($scope.canvasWidth/2), $scope.canvasHeight, $scope.canvasHeight, Math.PI * 1, Math.PI * 2, false);
         line.closePath();
         line.lineWidth = 5;
-        line.fillStyle = 'gainsboro';
+        line.fillStyle = '#e3e1e1';
         line.fill();
 
         ground.lineWidth = 25;
@@ -69,13 +69,13 @@
         $scope.clearCanvas();
         $scope.drawDome();
 
-        for (var i = 0; i < 26; i++) {
+        for (var i = 0; i < $scope.residences; i++) {
             $scope.generateBuilding($scope.buildingOne, $scope.layerOne);
         }
-        for (var i = 0; i < 26; i++) {
+        for (var i = 0; i < $scope.labs; i++) {
             $scope.generateBuilding($scope.buildingTwo, $scope.layerTwo);
         }
-        for (var i = 0; i < 26; i++) {
+        for (var i = 0; i < $scope.greenhouses; i++) {
             $scope.generateBuilding($scope.buildingThree, $scope.layerThree);
         }
     }

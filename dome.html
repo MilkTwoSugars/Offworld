@@ -1,4 +1,5 @@
-﻿<div class="panel panel-default machine-panel">
+﻿<div class="panel panel-default machine-panel" ng-show="domeActive">
+    <div class="panel-heading clearfix"><div ng-include="'dome-resources.html'"></div></div>
     <div class="panel-body">
         <div class="domeContainer">
             <canvas id="domeCanvas" width="{{canvasWidth}}" height="{{canvasHeight}}" style="z-index: 1;"></canvas>
@@ -9,16 +10,31 @@
     </div>
 </div>
 
-<div class="panel panel-default machine-panel">
-    <div class="panel-heading">Construction</div>
+<div class="panel panel-default machine-panel" ng-show="domeActive">
     <div class="panel-body">
-        <span class="machine-button"><button class="btn btn-block btn-offworld-active" ng-click="generateCity()">Generate</button></span>
-        <span class="machine-button"><button class="btn btn-block btn-offworld-active" ng-click="drawDome()">Dome</button></span>
-        <span class="machine-button"><button class="btn btn-block btn-offworld-active" ng-click="constructBuildingOne()">1</button></span>
-        <span class="machine-button"><button class="btn btn-block btn-offworld-active" ng-click="constructBuildingTwo()">2</button></span>
-        <span class="machine-button"><button class="btn btn-block btn-offworld-active" ng-click="constructBuildingThree()">3</button></span>
-        <span class="machine-button"><button class="btn btn-block btn-offworld-active" ng-click="clearCanvas()">Clear</button></span>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="panel panel-default dome-facility clearfix"><span class="glyphicon glyphicon-home"></span> Residential<span class="machine-button"><button class="btn btn-sm btn-offworld-active pull-right" ng-click="buyResidence()">Construct</button></span></div>
+                <div class="panel panel-default dome-facility clearfix"><span class="glyphicon glyphicon-book"></span> Laboratory<span class="machine-button"><button class="btn btn-sm btn-offworld-active pull-right" ng-click="buyLab()">Construct</button></span></div>
+                <div class="panel panel-default dome-facility clearfix"><span class="glyphicon glyphicon-leaf"></span> Greenhouse<span class="machine-button"><button class="btn btn-sm btn-offworld-active pull-right" ng-click="buyGreenhouse()">Construct</button></span></div>
+            </div>
+            <div class="col-md-2"></div>
+
+            <div class="col-md-5">
+                <div class="panel panel-default machine-panel">
+                    <div class="panel-heading">Information</div>
+                    <div class="panel-body">Stuff here</div>
+                    </div>
+            </div>
+
+        </div>
+
     </div>
+</div>
+<h1 class="title" ng-show="!domeActive">Dome</h1>
+<div class="well" ng-show="!domeActive">
+    <div class="factory-build">Requires 100 <span class="glyphicon glyphicon-asterisk"></span> + 100 <span class="glyphicon glyphicon-tint"></span></div>
+    <span class="machine-button"><button class="btn btn-block btn-offworld-active" ng-click="buyDome()">Construct</button></span>
 </div>
 
 

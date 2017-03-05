@@ -29,6 +29,7 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
     $scope.materialAvailable = false;
 
     $scope.domeAvailable = false;
+    $scope.domeActive = false;
 
     // States
     $scope.drillStatus = true;
@@ -50,6 +51,13 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
 
     $scope.totalExtractors = 0;
     $scope.extractorCost = 10;
+
+    // Dome Resources
+    $scope.greenhouses = 0;
+    $scope.residences = 0;
+    $scope.labs = 0;
+
+    $scope.population = 0;
 
     // Factory
     $scope.factoryInput = "materialSelected";
@@ -148,7 +156,7 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
             $scope.events.pop();
         }
 
-        // Fucking angular bullshit
+        // Angular repeat funniness
         x = angular.copy(x);
 
         x.id = $scope.eventCounter;
@@ -437,7 +445,7 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
         return $scope.droneTimer;
     }
 
-    // Buy
+    // Buy Facilities
 
     $scope.buyRig = function () {
         if ($scope.ore >= $scope.rigCost) {
@@ -560,6 +568,29 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
             $scope.automationAvailable = true;
             $scope.newEvent($scope.logAutomationUnlocked);
         }
+    }
+
+    // Buy Dome Facilities
+
+    $scope.buyDome = function () {
+        $scope.domeActive = true;
+        $scope.initialiseCanvas();
+        $scope.drawDome();
+    }
+
+    $scope.buyGreenhouse = function () {
+        $scope.greenhouses += 1;
+        $scope.constructBuildingThree();
+    }
+
+    $scope.buyLab = function () {
+        $scope.labs += 1;
+        $scope.constructBuildingTwo();
+    }
+
+    $scope.buyResidence = function () {
+        $scope.residences += 1;
+        $scope.constructBuildingOne();
     }
 
     // Misc
