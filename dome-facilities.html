@@ -1,0 +1,25 @@
+﻿<div class="panel panel-default machine-panel no-transition">
+    <div class="panel-heading" ng-show="selectedDomeFacility == 0"><h4>Information</h4></div>
+    <div class="panel-heading" ng-show="selectedDomeFacility == 1"><h4><span class="glyphicon glyphicon-home"></span> Residential Building</h4></div>
+    <div class="panel-heading" ng-show="selectedDomeFacility == 2"><h4><span class="glyphicon glyphicon-book"></span> Laboratory</h4></div>
+    <div class="panel-heading" ng-show="selectedDomeFacility == 3"><h4><span class="glyphicon glyphicon-leaf"></span> Greenhouse</h4></div>
+
+    <div class="panel-body" ng-show="selectedDomeFacility == 0">
+    <h5>Select a facility to view requirements.</h5>
+    </div>
+
+    <div class="panel-body" ng-show="selectedDomeFacility == 1">
+        <h5>Requires <span class="glyphicon glyphicon-equalizer"></span> 30</h5>
+        <h5>Requires <span class="glyphicon glyphicon-compressed"></span> 1</h5>
+    </div>
+
+    <div class="panel-body" ng-show="selectedDomeFacility == 2">
+        <h5>Requires <span class="glyphicon glyphicon-equalizer"></span> 20 and <span class="glyphicon glyphicon-qrcode"></span> 10</h5>
+        <h5>Requires <span class="glyphicon glyphicon-compressed"></span> 1</h5>
+    </div>
+
+    <div class="panel-body" ng-show="selectedDomeFacility == 3">
+        <h5>Requires <span class="glyphicon glyphicon-equalizer"></span> 10 and <span class="glyphicon glyphicon-tint"></span> 100</h5>
+        <h5>Requires <span class="glyphicon glyphicon-compressed"></span> 1</h5>
+    </div>
+</div>

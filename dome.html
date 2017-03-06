@@ -14,17 +14,16 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-md-5">
-                <div class="panel panel-default dome-facility clearfix"><span class="glyphicon glyphicon-home"></span> Residential<span class="machine-button"><button class="btn btn-sm btn-offworld-active pull-right" ng-click="buyResidence()">Construct</button></span></div>
-                <div class="panel panel-default dome-facility clearfix"><span class="glyphicon glyphicon-book"></span> Laboratory<span class="machine-button"><button class="btn btn-sm btn-offworld-active pull-right" ng-click="buyLab()">Construct</button></span></div>
-                <div class="panel panel-default dome-facility clearfix"><span class="glyphicon glyphicon-leaf"></span> Greenhouse<span class="machine-button"><button class="btn btn-sm btn-offworld-active pull-right" ng-click="buyGreenhouse()">Construct</button></span></div>
+                <div ng-mouseleave="domeInfo(0)">
+                    <div class="panel panel-default dome-facility clearfix" ng-mouseenter="domeInfo(1)"><span class="glyphicon glyphicon-home"></span> Residential<span class="machine-button"><button class="btn btn-offworld-active pull-right" ng-click="buyResidence()">Construct</button></span></div>
+                    <div class="panel panel-default dome-facility clearfix" ng-mouseenter="domeInfo(2)"><span class="glyphicon glyphicon-book"></span> Laboratory<span class="machine-button"><button class="btn btn-offworld-active pull-right" ng-click="buyLab()">Construct</button></span></div>
+                    <div class="panel panel-default dome-facility clearfix" ng-mouseenter="domeInfo(3)"><span class="glyphicon glyphicon-leaf"></span> Greenhouse<span class="machine-button"><button class="btn btn-offworld-active pull-right" ng-click="buyGreenhouse()">Construct</button></span></div>
+                </div>
             </div>
             <div class="col-md-2"></div>
 
             <div class="col-md-5">
-                <div class="panel panel-default machine-panel">
-                    <div class="panel-heading">Information</div>
-                    <div class="panel-body">Stuff here</div>
-                    </div>
+                <div ng-include="'dome-facilities.html'"></div>
             </div>
 
         </div>
@@ -33,7 +32,7 @@
 </div>
 <h1 class="title" ng-show="!domeActive">Dome</h1>
 <div class="well" ng-show="!domeActive">
-    <div class="factory-build">Requires 100 <span class="glyphicon glyphicon-asterisk"></span> + 100 <span class="glyphicon glyphicon-tint"></span></div>
+    <div class="factory-build">Requires 1000 <span class="glyphicon glyphicon-stop"></span> + 500 <span class="glyphicon glyphicon-cd"></span></div>
     <span class="machine-button"><button class="btn btn-block btn-offworld-active" ng-click="buyDome()">Construct</button></span>
 </div>
 

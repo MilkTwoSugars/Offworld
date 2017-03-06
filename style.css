@@ -2,6 +2,7 @@
 
 body {
     font-family: 'Roboto Mono', monospace !important;
+    user-select: none;
 }
 
 a {
@@ -60,16 +61,11 @@ label {
 }
 
 .dome-facility {
-    padding-left: 1%;
-    padding-top: 1%;
-    padding-bottom: 1%;
+    padding: 2%;
     margin-bottom: 1% !important;
     font-size: 16px;
 }
 
-.dome-facility button {
-    margin-right: .5% !important;
-}
 
 .dome-well {
     margin-top: 0 !important;
@@ -178,6 +174,11 @@ canvas {
 
 .factory-input {
     padding: 3%;
+    cursor: pointer;
+}
+
+.drone-input {
+    padding: 3%;
 }
 
 .factory-input-selected {
@@ -188,9 +189,17 @@ canvas {
     margin-top: 50%;
 }
 
+.drone-quantity-box {
+    margin-top: 5%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .factory-quantity-selection {
     text-align: center !important;
     margin: 10%;
+    cursor: pointer;
 }
 
 .factory-quantity-selected {
@@ -231,6 +240,11 @@ canvas {
     opacity: 1;
 }
 
+.no-transition.ng-hide {
+    opacity: 1;
+    transition: none;
+}
+
 
 .startPage.ng-hide {
     opacity: 0;
@@ -258,6 +272,8 @@ canvas {
     margin-left: 5%;
     margin-right: 5%;
     box-shadow: 5px 5px 2px #dedede !important;
+    font-size: 13px;
+    cursor: default;
 }
 
 .resource {

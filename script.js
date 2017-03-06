@@ -59,6 +59,9 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
 
     $scope.population = 0;
 
+    $scope.selectedDomeFacility = 0;
+    $scope.maximumBuildings = 40;
+
     // Factory
     $scope.factoryInput = "materialSelected";
     $scope.factoryOutput = "materialSelected";
@@ -113,6 +116,9 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
 
     // Drones
     $scope.drones = 0;
+
+    $scope.droneQuantity = 1;
+    $scope.droneQuantityOutput = 1;
 
     // Timing
     $scope.oreInterval = 500; // Time in ms between ticks
@@ -417,14 +423,15 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
 
     // Drones
 
-    $scope.build = function () {
-        if ($scope.droneTimer == 100 && $scope.droneStatus == true && $scope.alloy >= 2 && $scope.metal >= 2 && $scope.component >= 1 && $scope.fuel >= 1) {
+    $scope.build = function (quantity) {
+        if ($scope.droneTimer == 100 && $scope.droneStatus == true && $scope.alloy >= (2 * $scope.droneQuantity) && $scope.metal >= (2 * $scope.droneQuantity) && $scope.component >= (1 * $scope.droneQuantity) && $scope.fuel >= (1 * $scope.droneQuantity)) {
+            $scope.droneQuantityOutput = quantity;
             $scope.droneStatus = false;
             $scope.droneTimer = 0;
-            $scope.alloy -= 2;
-            $scope.metal -= 2;
-            $scope.component -= 1;
-            $scope.fuel -= 1;
+            $scope.alloy -= (2 * $scope.droneQuantityOutput);
+            $scope.metal -= (2 * $scope.droneQuantityOutput);
+            $scope.component -= (1 * $scope.droneQuantityOutput);
+            $scope.fuel -= (1 * $scope.droneQuantityOutput);
 
             $interval($scope.droneCounter, $scope.droneInterval, $scope.droneClock);
         }
@@ -436,7 +443,7 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
         $scope.droneTimer += $scope.droneIncrement;
         if ($scope.droneTimer >= 100 && $scope.droneStatus == false) {
             $scope.droneStatus = true;
-            $scope.drones += 1;
+            $scope.drones += (1 * $scope.droneQuantityOutput);
         }
 
     };
@@ -570,43 +577,61 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
         }
     }
 
-    // Buy Dome Facilities
+    // Dome Facilities
 
     $scope.buyDome = function () {
-        $scope.domeActive = true;
-        $scope.initialiseCanvas();
-        $scope.drawDome();
+        if ($scope.metal >= 1000 && $scope.alloy >= 500) {
+            $scope.metal -= 1000;
+            $scope.alloy -= 500;
+            $scope.domeActive = true;
+            $scope.initialiseCanvas();
+            $scope.drawDome();
+        }
     }
 
     $scope.buyGreenhouse = function () {
-        $scope.greenhouses += 1;
-        $scope.constructBuildingThree();
+        if ($scope.material >= 10 && $scope.water >= 100 && $scope.drones >= 1) {
+            $scope.material -= 10;
+            $scope.water -= 100;
+            $scope.drones -= 1;
+            $scope.greenhouses += 1;
+            if ($scope.greenhouses < $scope.maximumBuildings) {
+                $scope.constructBuildingThree();
+            }
+        }
     }
 
     $scope.buyLab = function () {
-        $scope.labs += 1;
-        $scope.constructBuildingTwo();
+        if ($scope.material >= 20 && $scope.component >= 10 && $scope.drones >= 1) {
+            $scope.material -= 20;
+            $scope.component -= 10;
+            $scope.drones -= 1;
+            $scope.labs += 1;
+            if ($scope.labs < $scope.maximumBuildings) {
+                $scope.constructBuildingTwo();
+            }
+        }
     }
 
     $scope.buyResidence = function () {
-        $scope.residences += 1;
-        $scope.constructBuildingOne();
+        if ($scope.material >= 30 && $scope.drones >= 1) {
+            $scope.material -= 30;
+            $scope.drones -= 1;
+            $scope.residences += 1;
+            if ($scope.residences < $scope.maximumBuildings) {
+                $scope.constructBuildingOne();
+            }
+        }
+    }
+
+    $scope.domeInfo = function (facility) {
+        $scope.selectedDomeFacility = facility;
     }
 
     // Misc
 
     $scope.debug = function()
     {
-        $scope.ore += 100;
-        $scope.water += 100;
-        $scope.metal += 100;
-        $scope.gas += 100;
-        $scope.material += 100;
-        $scope.alloy += 100;
-        $scope.component += 100;
-        $scope.fuel += 100;
-        $scope.drones += 0;
-
         $scope.pumpsAvailable = true;
         $scope.extractorsAvailable = true;
         $scope.wellsAvailable = true;
@@ -618,14 +643,14 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
     }
 
     $scope.debugResources = function () {
-        $scope.ore += 100;
-        $scope.water += 100;
-        $scope.metal += 100;
-        $scope.gas += 100;
-        $scope.material += 100;
-        $scope.alloy += 100;
-        $scope.component += 100;
-        $scope.fuel += 100;
+        $scope.ore += 1000;
+        $scope.water += 1000;
+        $scope.metal += 1000;
+        $scope.gas += 1000;
+        $scope.material += 1000;
+        $scope.alloy += 1000;
+        $scope.component += 1000;
+        $scope.fuel += 1000;
         $scope.drones += 100;
     }
 
