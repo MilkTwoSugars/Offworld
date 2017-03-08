@@ -2,9 +2,10 @@
     <div class="panel-heading">
         <h1 class="title">L0G</h1>
     </div>
-    <div class="panel-body">
+    <div class="panel-body log-panel">
         
         <div class="well eventMessage" ng-repeat="event in events track by event.id">
+            <div class="event-message-type" ng-show="event.type == 'Story'"><span class="glyphicon glyphicon-globe pull-right"></span></div>
         <div ng-bind-html="event.message">{{event.message}}</div>
         </div>
 

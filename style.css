@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Roboto Mono', monospace !important;
-    user-select: none;
+    
 }
 
 a {
@@ -24,6 +24,7 @@ label {
     margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
+    user-select: none;
 }
 
 .title {
@@ -274,6 +275,7 @@ canvas {
     box-shadow: 5px 5px 2px #dedede !important;
     font-size: 13px;
     cursor: default;
+    user-select: none;
 }
 
 .resource {
@@ -287,4 +289,13 @@ canvas {
 .eventMessage {
     padding: 0px;
     font-style: italic;
+}
+
+.event-message-type {
+    font-size: 16px;
+}
+
+.log-panel {
+    height: 600px;
+    overflow-y: scroll;
 }

@@ -156,8 +156,18 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
 
     // Events
 
+    $scope.getNextStory = function () {
+        if ($scope.logArray[$scope.story] != undefined) {
+            $scope.newEvent($scope.logArray[$scope.story]);
+            $scope.story += 1;
+        } else {
+            $scope.newEvent($scope.logBroadcastReturn);
+        }
+
+    }
+
     $scope.newEvent = function (x) {
-        if ($scope.events.length == 6)
+        if ($scope.events.length == 100)
         {
             $scope.events.pop();
         }
@@ -282,7 +292,7 @@ app.controller("mainController", function ($scope, $timeout, $interval) {
         $scope.broadcastTimer += $scope.broadcastIncrement;
         if ($scope.broadcastTimer >= 100 && $scope.broadcastStatus == false) {
             $scope.broadcastStatus = true;
-            $scope.newEvent($scope.logBroadcastReturn);
+            $scope.getNextStory();
         }
 
     };
